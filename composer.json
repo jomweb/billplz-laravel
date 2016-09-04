@@ -1,0 +1,24 @@
+{
+    "name": "jomweb/billplz-laravel",
+    "description": "Laravel adapter for Billplz",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Billplz\\Illuminate\\": "src/"
+        }
+    },
+    "require": {
+        "jomweb/billplz": "^0.5",
+        "php-http/guzzle6-adapter": "^1.1",
+        "illuminate/support": "~5.1"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
