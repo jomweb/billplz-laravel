@@ -9,9 +9,9 @@ class Billplz extends Facade
     /**
      * Get the registered name of the component.
      *
-     * @return string
-     *
      * @throws \RuntimeException
+     *
+     * @return string
      */
     protected static function getFacadeAccessor()
     {

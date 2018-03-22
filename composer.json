@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "jomweb/billplz": "^0.5",
+        "jomweb/billplz": "^1.3",
         "php-http/guzzle6-adapter": "^1.1",
         "illuminate/support": "~5.1"
     },

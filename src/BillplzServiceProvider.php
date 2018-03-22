@@ -4,10 +4,7 @@ namespace Billplz\Illuminate;
 
 use Billplz\Client;
 use Illuminate\Support\ServiceProvider;
-use Http\Client\Common\HttpMethodsClient;
 use Illuminate\Contracts\Foundation\Application;
-use Http\Adapter\Guzzle6\Client as GuzzleHttpClient;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
 
 class BillplzServiceProvider extends ServiceProvider
 {
@@ -28,7 +25,9 @@ class BillplzServiceProvider extends ServiceProvider
         $this->app->singleton('billplz', function (Application $app) {
             $config = $app->make('config')->get('services.billplz');
 
-            $billplz = new Client($this->getHttpClient(), $config['key']);
+            $signature = isset($config['x-signature']) ? $config['x-signature'] : null;
+
+            $billplz = Client::make($config['key'], $signature);
 
             if (isset($config['version'])) {
                 $billplz->useVersion($config['version']);
@@ -40,19 +39,6 @@ class BillplzServiceProvider extends ServiceProvider
 
             return $billplz;
         });
-    }
-
-    /**
-     * Set HTTP client.
-     *
-     * @return \Http\Client\Common\HttpMethodsClient
-     */
-    protected function getHttpClient()
-    {
-        return new HttpMethodsClient(
-                new GuzzleHttpClient(),
-                new GuzzleMessageFactory()
-            );
     }
 
     /**
