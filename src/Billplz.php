@@ -1,6 +1,6 @@
 <?php
 
-namespace Billplz\Illuminate;
+namespace Billplz\Laravel;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Billplz\Illuminate;
+namespace Billplz\Laravel;
 
 use Billplz\Client;
 use Illuminate\Support\ServiceProvider;
