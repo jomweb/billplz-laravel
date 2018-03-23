@@ -25,20 +25,32 @@ class BillplzServiceProvider extends ServiceProvider
         $this->app->singleton('billplz', function (Application $app) {
             $config = $app->make('config')->get('services.billplz');
 
-            $signature = isset($config['x-signature']) ? $config['x-signature'] : null;
-
-            $billplz = Client::make($config['key'], $signature);
-
-            if (isset($config['version'])) {
-                $billplz->useVersion($config['version']);
-            }
-
-            if (isset($config['sandbox']) && $config['sandbox'] == true) {
-                $billplz->useSandbox();
-            }
-
-            return $billplz;
+            return $this->createBillplzClient($config);
         });
+    }
+
+    /**
+     * Create Billplz Client.
+     *
+     * @param  array  $config
+     *
+     * @return \Billplz\Client
+     */
+    protected function createBillplzClient(array $config)
+    {
+        $signature = isset($config['x-signature']) ? $config['x-signature'] : null;
+
+        $billplz = Client::make($config['key'], $signature);
+
+        if (isset($config['version'])) {
+            $billplz->useVersion($config['version']);
+        }
+
+        if (isset($config['sandbox']) && $config['sandbox'] == true) {
+            $billplz->useSandbox();
+        }
+
+        return $billplz;
     }
 
     /**
