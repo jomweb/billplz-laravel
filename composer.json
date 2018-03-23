@@ -14,6 +14,11 @@
             "Billplz\\Laravel\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Billplz\\Laravel\\TestCase\\": "tests/"
+        }
+    },
     "require": {
         "jomweb/billplz": "~1.2",
         "php-http/guzzle6-adapter": "^1.1",
