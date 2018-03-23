@@ -3,6 +3,7 @@
 namespace Billplz\Laravel;
 
 use Billplz\Client;
+use Laravie\Codex\Discovery;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 
@@ -40,7 +41,7 @@ class BillplzServiceProvider extends ServiceProvider
     {
         $signature = isset($config['x-signature']) ? $config['x-signature'] : null;
 
-        $billplz = Client::make($config['key'], $signature);
+        $billplz = new Client($this->createHttpClient(), $config['key'], $signature);
 
         if (isset($config['version'])) {
             $billplz->useVersion($config['version']);
@@ -51,6 +52,16 @@ class BillplzServiceProvider extends ServiceProvider
         }
 
         return $billplz;
+    }
+
+    /**
+     * Create HTTP Client.
+     *
+     * @return \Http\Client\Common\HttpMethodsClient
+     */
+    protected function createHttpClient()
+    {
+        return Discovery::client();
     }
 
     /**
