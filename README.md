@@ -66,12 +66,13 @@ Next add the configuration in `config/services.php`.
 
 return [
   
-    // ...
-    'billplz' => [
-        'key' => env('BILLPLZ_API_KEY'),
-        'version' => env('BILLPLZ_VERSION', 'v3'),
-        'x-signature' => env('BILLPLZ_X_SIGNATURE'),
-        'sandbox' => env('BILLPLZ_SANDBOX', false),
-    ],
+  // ...
+    
+  'billplz' => [
+    'key' => env('BILLPLZ_API_KEY'),
+    'version' => env('BILLPLZ_VERSION', 'v3'),
+    'x-signature' => env('BILLPLZ_X_SIGNATURE'),
+    'sandbox' => env('BILLPLZ_SANDBOX', false),
+  ],
 ];
 ```
