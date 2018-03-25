@@ -40,8 +40,7 @@ Next add the service provider in `config/app.php`.
   // ...
 
   Billplz\Laravel\BillplzServiceProvider::class,
-]
-,
+],
 ```
 
 ### Aliases
