@@ -8,7 +8,7 @@ Billplz adapter for Laravel
 [![License](https://poser.pugx.org/jomweb/billplz-laravel/license)](https://packagist.org/packages/jomweb/billplz-laravel)
 
 * [Installation](#installation)
-* [Usages](#usages)
+* [Configuration](#configuration)
 
 ## Installation
 
