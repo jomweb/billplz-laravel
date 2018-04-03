@@ -16,7 +16,7 @@ To install through composer, simply put the following in your `composer.json` fi
 
 ```json
 {
-    "require-dev": {
+    "require": {
         "jomweb/billplz-laravel": "~1.0"
     }
 }
@@ -37,9 +37,10 @@ Next add the service provider in `config/app.php`.
 ```php
 'providers' => [
 
-  // ...
+    // ...
 
-  Billplz\Laravel\BillplzServiceProvider::class,
+    Billplz\Laravel\BillplzServiceProvider::class,
+
 ],
 ```
 
@@ -50,9 +51,9 @@ You might want to add `Billplz\Laravel\Billplz` to class aliases in `config/app.
 ```php
 'aliases' => [
 
-  // ...
+    // ...
 
-  'Billplz' => Billplz\Laravel\Billplz::class,
+    'Billplz' => Billplz\Laravel\Billplz::class,
 
 ],
 ```
@@ -65,14 +66,14 @@ Next add the configuration in `config/services.php`.
 <?php 
 
 return [
-  
-  // ...
-    
-  'billplz' => [
-    'key' => env('BILLPLZ_API_KEY'),
-    'version' => env('BILLPLZ_VERSION', 'v3'),
-    'x-signature' => env('BILLPLZ_X_SIGNATURE'),
-    'sandbox' => env('BILLPLZ_SANDBOX', false),
-  ],
+
+    // ...
+
+    'billplz' => [
+        'key' => env('BILLPLZ_API_KEY'),
+        'version' => env('BILLPLZ_VERSION', 'v3'),
+        'x-signature' => env('BILLPLZ_X_SIGNATURE'),
+        'sandbox' => env('BILLPLZ_SANDBOX', false),
+    ],
 ];
 ```
