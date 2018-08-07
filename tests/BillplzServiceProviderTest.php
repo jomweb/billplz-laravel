@@ -37,7 +37,6 @@ class BillplzServiceProviderTest extends TestCase
         $this->assertSame('v4', Billplz::getApiVersion());
     }
 
-
     /** @test */
     public function it_can_use_sandbox_environment()
     {
