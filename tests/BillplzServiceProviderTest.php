@@ -13,7 +13,7 @@ class BillplzServiceProviderTest extends TestCase
         $billplz = new BillplzServiceProvider(null);
 
         $this->assertTrue($billplz->isDeferred());
-        $this->assertSame(['billplz'], $billplz->provides());
+        $this->assertSame(['billplz', 'Billplz\Client'], $billplz->provides());
     }
 
     /** @test */
