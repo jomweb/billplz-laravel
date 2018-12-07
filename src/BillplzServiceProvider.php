@@ -28,6 +28,8 @@ class BillplzServiceProvider extends ServiceProvider
 
             return $this->createBillplzClient($config);
         });
+
+        $this->app->alias('billplz', Client::class);
     }
 
     /**
@@ -71,6 +73,9 @@ class BillplzServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['billplz'];
+        return [
+            'billplz',
+            Client::class,
+        ];
     }
 }
