@@ -31,6 +31,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.1-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Billplz\\Laravel\\BillplzServiceProvider"
+            ],
+            "aliases": {
+                "Billplz": "Billplz\\Laravel\\Billplz"
+            }
         }
     },
     "prefer-stable": true,
