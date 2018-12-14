@@ -2,6 +2,7 @@
 
 namespace Billplz\Laravel\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Billplz\Exceptions\FailedSignatureVerification;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -14,7 +15,12 @@ class Redirection extends PaymentCompletion
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'billplz.id' => ['required', 'alpha_dash'],
+            'billplz.paid' => ['required', Rule::in(['true', 'false', true, false])],
+            'billplz.paid_at' => ['required', 'date'],
+            'billplz.x_signature' => [$this->hasSignatureKey() ? 'required' : 'sometimes'],
+        ];
     }
 
     /**
@@ -28,10 +34,6 @@ class Redirection extends PaymentCompletion
             $validated = $this->getResourceInstance()->redirect($this->query());
         } catch (FailedSignatureVerification $e) {
             throw new HttpException(419, 'Unable to verify X-Signature.', $e);
-        }
-
-        if (is_null($validated)) {
-            throw new HttpException(422, 'The given data was invalid.');
         }
 
         return $validated;
