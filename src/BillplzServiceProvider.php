@@ -41,15 +41,14 @@ class BillplzServiceProvider extends ServiceProvider
      */
     protected function createBillplzClient(array $config)
     {
-        $signature = isset($config['x-signature']) ? $config['x-signature'] : null;
+        $signature = $config['x-signature'] ?? null;
+        $sandbox = $config['sandbox'] ?? false;
 
         $billplz = new Client($this->createHttpClient(), $config['key'], $signature);
 
-        if (isset($config['version'])) {
-            $billplz->useVersion($config['version']);
-        }
+        $billplz->useVersion($config['version'] ?? 'v4');
 
-        if (isset($config['sandbox']) && $config['sandbox'] == true) {
+        if ($sandbox == true) {
             $billplz->useSandbox();
         }
 
