@@ -13,7 +13,7 @@ abstract class TestCase extends Testbench
      *
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('services.billplz', [
             'key' => '73eb57f0-7d4e-42b9-a544-aeac6e4b0f81',

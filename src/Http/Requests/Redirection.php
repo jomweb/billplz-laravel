@@ -26,10 +26,14 @@ class Redirection extends PaymentCompletion
     {
         try {
             $validated = $this->getResourceInstance()->redirect($this->query());
-
-            return $validated ?? [];
         } catch (FailedSignatureVerification $e) {
             throw new HttpException(419, 'Unable to verify X-Signature.', $e);
         }
+
+        if (is_null($validated)) {
+            throw new HttpException(422, 'The given data was invalid.');
+        }
+
+        return $validated;
     }
 }

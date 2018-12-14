@@ -8,15 +8,21 @@ use Billplz\Laravel\Http\Requests\Redirection;
 
 class RedirectionTest extends TestCase
 {
+    /**
+     * Setup the test environment.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->app['router']->get('completed', function (Redirection $request) {
+            return Arr::only($request->validated(), ['id', 'paid']);
+        });
+    }
+
     /** @test */
     public function it_can_accept_redirection_callback()
     {
-        $router = $this->app['router'];
-
-        $router->get('completed', function (Redirection $request) {
-            return Arr::only($request->validated(), ['id', 'paid']);
-        });
-
         $bill = [
             'billplz' => [
                 'id' => 'W_79pJDk',
@@ -61,17 +67,9 @@ class RedirectionTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_cant_accept_redirection_callback_with_invalid_signature()
     {
-        $router = $this->app['router'];
-
-        $router->get('completed', function (Redirection $request) {
-            return $request->validated();
-        });
-
         $bill = [
             'billplz' => [
                 'id' => 'W_79pJDk',
@@ -83,5 +81,20 @@ class RedirectionTest extends TestCase
 
         $this->get('completed?'.http_build_query($bill))
             ->assertStatus(419);
+    }
+
+    /** @test */
+    public function it_cant_accept_redirection_callback_given_bad_data()
+    {
+        $bill = [
+            'billplz' => [
+                'id' => 'W_79pJDk',
+                'paid' => 'true',
+                'paid_at' => '2015-03-09 16:23:59 +0800',
+            ],
+        ];
+
+        $this->get('completed?'.http_build_query($bill))
+            ->assertStatus(422);
     }
 }
