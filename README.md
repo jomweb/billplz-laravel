@@ -9,6 +9,7 @@ Billplz adapter for Laravel
 
 * [Installation](#installation)
 * [Configuration](#configuration)
+* [Usages](#usages)
 
 ## Installation
 
@@ -77,3 +78,38 @@ return [
     ],
 ];
 ```
+
+## Usages
+
+### Creating Client
+
+With `jomweb/billplz-laravel` you have the option to initiate the client using the following methods.
+
+#### Facade
+
+```php
+use Billplz\Laravel\Billplz;
+
+$bill = Billplz::bill()->create( /* ... */ );
+```
+
+#### IoC
+
+```php
+$bill = resolve('billplz')->bill()->create( /* ... */ );
+```
+
+### Dependency Injection
+
+```php
+use Billplz\Client;
+
+// ...
+
+public function createBill(Client $client)
+{
+    $bill = $client->bill()->create( /* ... */ );
+
+}
+```
+
