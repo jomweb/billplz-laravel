@@ -99,7 +99,7 @@ $bill = Billplz::bill()->create( /* ... */ );
 $bill = resolve('billplz')->bill()->create( /* ... */ );
 ```
 
-### Dependency Injection
+#### Dependency Injection
 
 ```php
 use Billplz\Client;
