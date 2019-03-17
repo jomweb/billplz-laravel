@@ -6,16 +6,10 @@ use Billplz\Client;
 use Laravie\Codex\Discovery;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
-class BillplzServiceProvider extends ServiceProvider
+class BillplzServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * Register the service.
      *

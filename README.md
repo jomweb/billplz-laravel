@@ -19,7 +19,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
     "require": {
-        "jomweb/billplz-laravel": "^1.0"
+        "jomweb/billplz-laravel": "^1.1"
     }
 }
 ```
@@ -30,7 +30,7 @@ And then run `composer install` from the terminal.
 
 Above installation can also be simplify by using the following command:
 
-    composer require "jomweb/billplz-laravel=^1.0"
+    composer require "jomweb/billplz-laravel=^1.1"
 
 ## Configuration
 
