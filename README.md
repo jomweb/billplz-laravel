@@ -6,6 +6,7 @@ Billplz adapter for Laravel
 [![Total Downloads](https://poser.pugx.org/jomweb/billplz-laravel/downloads)](https://packagist.org/packages/jomweb/billplz-laravel)
 [![Latest Unstable Version](https://poser.pugx.org/jomweb/billplz-laravel/v/unstable)](//packagist.org/packages/jomweb/billplz-laravel)
 [![License](https://poser.pugx.org/jomweb/billplz-laravel/license)](https://packagist.org/packages/jomweb/billplz-laravel)
+[![Coverage Status](https://coveralls.io/repos/github/jomweb/billplz-laravel/badge.svg?branch=master)](https://coveralls.io/github/jomweb/billplz-laravel?branch=master)
 
 * [Installation](#installation)
 * [Configuration](#configuration)
