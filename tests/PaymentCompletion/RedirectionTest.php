@@ -1,9 +1,9 @@
 <?php
 
-namespace Billplz\Laravel\TestCase\PaymentCompletion;
+namespace Billplz\Laravel\Tests\PaymentCompletion;
 
 use Illuminate\Support\Arr;
-use Billplz\Laravel\TestCase\TestCase;
+use Billplz\Laravel\Tests\TestCase;
 use Billplz\Laravel\Http\Requests\Redirection;
 use Billplz\Laravel\Testing\RedirectionTests;
 

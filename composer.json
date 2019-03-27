@@ -16,7 +16,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Billplz\\Laravel\\TestCase\\": "tests/"
+            "Billplz\\Laravel\\Tests\\": "tests/"
         }
     },
     "require": {
