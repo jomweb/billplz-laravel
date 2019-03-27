@@ -1,6 +1,6 @@
 <?php
 
-namespace Billplz\Laravel\TestCase;
+namespace Billplz\Laravel\Tests;
 
 use Billplz\Laravel\Billplz;
 use Billplz\Laravel\BillplzServiceProvider;
