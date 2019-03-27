@@ -22,7 +22,7 @@
     "require": {
         "php": "^7.1",
         "illuminate/support": "^5.8",
-        "jomweb/billplz": "^3.0 || ^4.0",
+        "jomweb/billplz": "^3.0",
         "php-http/guzzle6-adapter": "^1.1.1 || ^2.0"
     },
     "require-dev": {
