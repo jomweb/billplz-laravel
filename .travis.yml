@@ -8,15 +8,21 @@ php:
 
 env:
   global:
+    - setup=basic
     - coverage=no
   matrix:
-    - setup=basic
-    - setup=lowest
-    - setup=stable
+    - laravel=5.8.*
+    - laravel=dev-master
+    - setup=lowest laravel=5.8.*
+    - setup=lowest laravel=dev-master
+    - setup=stable laravel=5.8.*
+    - setup=stable laravel=dev-master
+
+before_install:
+  - composer config discard-changes true
 
 before_script:
-  - composer config discard-changes true
-  - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+  - composer require "laravel/framework=${laravel}" --prefer-dist --no-interaction --no-suggest
   - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
   - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-lowest --prefer-stable; fi
   - if [[ $setup = 'coveralls' ]]; then travis_retry composer require "php-coveralls/php-coveralls=^2.1" --prefer-dist --no-interaction --no-suggest --dev; fi
@@ -34,6 +40,5 @@ matrix:
       env: setup=coveralls coverage=yes
   allow_failures:
     - php: nightly
-    - env: setup=lowest
     - env: setup=coveralls coverage=yes
   fast_finish: true
