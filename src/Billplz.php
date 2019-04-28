@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method \Billplz\Client useSandbox()
+ * @method \Laravie\Codex\Contracts\Request uses(string $service, string|null $version = null)
+ * @method \Laravie\Codex\Contracts\Request via(\Laravie\Codex\Contracts\Request $request)
  * @method \Billplz\Contracts\Collection collection(string|null $version = null)
  * @method \BIllplz\Contracts\OpenCollection openCollection(string|null $version = null)
  * @method \Billplz\Contracts\Bill bill(string|null $version = null)
