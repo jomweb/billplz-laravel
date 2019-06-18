@@ -93,7 +93,6 @@ trait WebhookTests
             'paid_at' => '2015-03-09 16:23:59 +0800',
         ];
 
-
         return $this->post($uri, $data, ['Content-Type' => 'application/x-www-form-urlencoded'])
                     ->assertStatus(422);
     }

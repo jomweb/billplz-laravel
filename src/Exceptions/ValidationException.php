@@ -29,6 +29,13 @@ class ValidationException extends HttpException
     public $errorBag;
 
     /**
+     * The status code to use for the response.
+     *
+     * @var int
+     */
+    private $statusCode = 422;
+
+    /**
      * Create a new exception instance.
      *
      * @param  \Illuminate\Contracts\Validation\Validator  $validator
@@ -59,13 +66,13 @@ class ValidationException extends HttpException
     /**
      * Set the HTTP status code to be used for the response.
      *
-     * @param  int  $status
+     * @param  int  $statusCode
      *
      * @return $this
      */
-    public function status($status)
+    public function status($statusCode)
     {
-        $this->status = $status;
+        $this->statusCode = $statusCode;
 
         return $this;
     }
@@ -92,5 +99,15 @@ class ValidationException extends HttpException
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * Get the response status code.
+     *
+     * @return int
+     */
+    public function getStatusCode()
+    {
+        return $this->statusCode;
     }
 }

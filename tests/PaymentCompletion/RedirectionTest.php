@@ -4,8 +4,8 @@ namespace Billplz\Laravel\Tests\PaymentCompletion;
 
 use Illuminate\Support\Arr;
 use Billplz\Laravel\Tests\TestCase;
-use Billplz\Laravel\Http\Requests\Redirection;
 use Billplz\Laravel\Testing\RedirectionTests;
+use Billplz\Laravel\Http\Requests\Redirection;
 
 class RedirectionTest extends TestCase
 {
