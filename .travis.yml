@@ -11,11 +11,14 @@ env:
     - coverage=no
   matrix:
     - laravel=5.8.*
+    - laravel=5.9.*
     - laravel=dev-master
-    - setup=lowest laravel=5.8.*
-    - setup=lowest laravel=dev-master
     - setup=stable laravel=5.8.*
+    - setup=stable laravel=5.9.*
     - setup=stable laravel=dev-master
+    - setup=lowest laravel=5.8.*
+    - setup=lowest laravel=5.9.*
+    - setup=lowest laravel=dev-master
 
 before_install:
   - composer config discard-changes true
