@@ -21,13 +21,13 @@
     },
     "require": {
         "php": "^7.1",
-        "illuminate/support": "^5.8",
+        "illuminate/support": "^5.8 || ^6.0",
         "jomweb/billplz": "^3.0",
         "php-http/guzzle6-adapter": "^1.1.1 || ^2.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.2",
-        "orchestra/testbench": "^3.8"
+        "orchestra/testbench": "^3.8 || ^4.0"
     },
     "extra": {
         "branch-alias": {
