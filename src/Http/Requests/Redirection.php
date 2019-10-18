@@ -22,7 +22,7 @@ class Redirection extends PaymentCompletion
         if ($this->hasSignatureKey()) {
             $rules['billplz.paid'] = ['required', Rule::in(['true', 'false', true, false])];
             $rules['billplz.paid_at'] = ['required', 'date'];
-            $rules['billplz.x_signature'] = [$this->hasSignatureKey() ? 'required' : 'sometimes'];
+            $rules['billplz.x_signature'] = ['required'];
         }
 
         return $rules;
