@@ -15,12 +15,17 @@ class Redirection extends PaymentCompletion
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'billplz.id' => ['required', 'alpha_dash'],
-            'billplz.paid' => ['required', Rule::in(['true', 'false', true, false])],
-            'billplz.paid_at' => ['required', 'date'],
-            'billplz.x_signature' => [$this->hasSignatureKey() ? 'required' : 'sometimes'],
         ];
+
+        if ($this->hasSignatureKey()) {
+            $rules['billplz.paid'] = ['required', Rule::in(['true', 'false', true, false])];
+            $rules['billplz.paid_at'] = ['required', 'date'];
+            $rules['billplz.x_signature'] = [$this->hasSignatureKey() ? 'required' : 'sometimes'];
+        }
+
+        return $rules;
     }
 
     /**

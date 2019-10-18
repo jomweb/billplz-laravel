@@ -39,7 +39,6 @@ class RedirectionTest extends TestCase
         $this->makeSuccessfulRedirectionWithoutSignature('completed')
             ->assertJson([
                 'id' => 'W_79pJDk',
-                'paid' => 'true',
             ]);
     }
 

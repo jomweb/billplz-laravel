@@ -47,8 +47,6 @@ trait RedirectionTests
         $data = [
             'billplz' => [
                 'id' => 'W_79pJDk',
-                'paid' => 'true',
-                'paid_at' => '2015-03-09 16:23:59 +0800',
             ],
         ];
 
