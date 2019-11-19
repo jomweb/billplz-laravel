@@ -26,8 +26,8 @@
         "php-http/guzzle6-adapter": "^2.0"
     },
     "require-dev": {
-        "mockery/mockery": "^1.2",
-        "orchestra/testbench": "^3.8 || ^4.0"
+        "mockery/mockery": "^1.2.3",
+        "orchestra/testbench": "^3.8.5 || ^4.0"
     },
     "extra": {
         "branch-alias": {
