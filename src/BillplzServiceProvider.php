@@ -5,7 +5,7 @@ namespace Billplz\Laravel;
 use Billplz\Client;
 use Laravie\Codex\Discovery;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
 class BillplzServiceProvider extends ServiceProvider implements DeferrableProvider
@@ -17,7 +17,7 @@ class BillplzServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function register()
     {
-        $this->app->singleton('billplz', function (Application $app) {
+        $this->app->singleton('billplz', function (Container $app) {
             $config = $app->make('config')->get('services.billplz');
 
             return $this->createBillplzClient($config);
