@@ -20,14 +20,14 @@
         }
     },
     "require": {
-        "php": "^7.1",
+        "php": ">=7.1",
         "illuminate/support": "^5.8 || ^6.0",
-        "jomweb/billplz": "^3.3.1",
+        "jomweb/billplz": "^3.4",
         "php-http/guzzle6-adapter": "^2.0"
     },
     "require-dev": {
-        "mockery/mockery": "^1.2.3",
-        "orchestra/testbench": "^3.8.5 || ^4.0"
+        "mockery/mockery": "^1.3",
+        "orchestra/testbench": "~3.8.5 || ^4.0.1"
     },
     "extra": {
         "branch-alias": {
