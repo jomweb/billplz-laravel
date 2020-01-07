@@ -1,0 +1,26 @@
+preset: package
+
+namespace: Billplz\Laravel
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: Billplz\Laravel\Console
+
+model:
+  namespace: Billplz\Laravel
+
+provider:
+  namespace: Billplz\Laravel
+
+testing:
+  namespace: Billplz\Laravel\Tests
