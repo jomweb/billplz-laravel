@@ -1,8 +1,9 @@
 <?php
 
-namespace Billplz\Laravel\Tests;
+namespace Billplz\Laravel\Tests\Feature;
 
 use Billplz\Laravel\Billplz;
+use Billplz\Laravel\Tests\TestCase;
 use Billplz\Laravel\BillplzServiceProvider;
 
 class BillplzServiceProviderTest extends TestCase

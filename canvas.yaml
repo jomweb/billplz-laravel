@@ -24,3 +24,5 @@ provider:
 
 testing:
   namespace: Billplz\Laravel\Tests
+  extends:
+    feature: Billplz\Laravel\Tests\TestCase

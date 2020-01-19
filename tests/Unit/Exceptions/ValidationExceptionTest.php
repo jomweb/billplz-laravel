@@ -1,6 +1,6 @@
 <?php
 
-namespace Billplz\Laravel\Tests\Exceptions;
+namespace Billplz\Laravel\Tests\Unit\Exceptions;
 
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
