@@ -2,8 +2,6 @@
 
 namespace Billplz\Laravel\Testing;
 
-use Illuminate\Foundation\Testing\TestResponse;
-
 trait RedirectionTests
 {
     use Concerns\PreparesBillplz;
@@ -11,7 +9,7 @@ trait RedirectionTests
     /**
      * Make successful redirection.
      */
-    protected function makeSuccessfulRedirection(string $uri): TestResponse
+    protected function makeSuccessfulRedirection(string $uri)
     {
         $this->prepareConfiguration();
 
@@ -32,7 +30,7 @@ trait RedirectionTests
     /**
      * Make successful redirection without x-signature.
      */
-    protected function makeSuccessfulRedirectionWithoutSignature(string $uri): TestResponse
+    protected function makeSuccessfulRedirectionWithoutSignature(string $uri)
     {
         $this->prepareConfigurationWithoutSignature();
 
@@ -50,7 +48,7 @@ trait RedirectionTests
     /**
      * Make unsuccessful redirection.
      */
-    protected function makeUnsuccessfulRedirection(string $uri): TestResponse
+    protected function makeUnsuccessfulRedirection(string $uri)
     {
         $this->prepareConfiguration();
 
@@ -70,7 +68,7 @@ trait RedirectionTests
     /**
      * Make unsuccessful redirection with invalid x-signature.
      */
-    protected function makeUnsuccessfulRedirectionWithInvalidSignature(string $uri): TestResponse
+    protected function makeUnsuccessfulRedirectionWithInvalidSignature(string $uri)
     {
         $this->prepareConfiguration();
 
