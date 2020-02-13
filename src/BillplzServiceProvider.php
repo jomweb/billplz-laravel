@@ -29,8 +29,6 @@ class BillplzServiceProvider extends ServiceProvider implements DeferrableProvid
     /**
      * Create Billplz Client.
      *
-     * @param  array  $config
-     *
      * @return \Billplz\Client
      */
     protected function createBillplzClient(array $config)

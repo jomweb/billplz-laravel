@@ -20,11 +20,7 @@ abstract class PaymentCompletion extends FormRequest
     /**
      * Handle a failed validation attempt.
      *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     *
      * @throws \Billplz\Laravel\Exceptions\ValidationException
-     *
-     * @return void
      */
     protected function failedValidation(Validator $validator): void
     {
@@ -33,8 +29,6 @@ abstract class PaymentCompletion extends FormRequest
 
     /**
      * Get client instance.
-     *
-     * @return \Billplz\Client
      */
     public function getClientInstance(): Client
     {
@@ -47,8 +41,6 @@ abstract class PaymentCompletion extends FormRequest
 
     /**
      * Get resource instance.
-     *
-     * @return \Billplz\Contracts\Bill
      */
     public function getResourceInstance(): Bill
     {
@@ -57,8 +49,6 @@ abstract class PaymentCompletion extends FormRequest
 
     /**
      * Check if Billplz if configured with signature.
-     *
-     * @return bool
      */
     protected function hasSignatureKey(): bool
     {

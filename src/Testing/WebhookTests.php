@@ -2,20 +2,14 @@
 
 namespace Billplz\Laravel\Testing;
 
-use Illuminate\Foundation\Testing\TestResponse;
-
 trait WebhookTests
 {
     use Concerns\PreparesBillplz;
 
     /**
      * Make successful webhook.
-     *
-     * @param  string  $uri
-     *
-     * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function makeSuccessfulWebhook(string $uri): TestResponse
+    protected function makeSuccessfulWebhook(string $uri)
     {
         $this->prepareConfiguration();
 
@@ -41,12 +35,8 @@ trait WebhookTests
 
     /**
      * Make successful webhook without signature.
-     *
-     * @param  string  $uri
-     *
-     * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function makeSuccessfulWebhookWithoutSignature(string $uri): TestResponse
+    protected function makeSuccessfulWebhookWithoutSignature(string $uri)
     {
         $this->prepareConfigurationWithoutSignature();
 
@@ -71,12 +61,8 @@ trait WebhookTests
 
     /**
      * Make unsuccessful webhook.
-     *
-     * @param  string  $uri
-     *
-     * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function makeUnsuccessfulWebhook(string $uri): TestResponse
+    protected function makeUnsuccessfulWebhook(string $uri)
     {
         $data = [
             'id' => 'W_79pJDk',
@@ -99,12 +85,8 @@ trait WebhookTests
 
     /**
      * Make unsuccessful webhook with invalid signature.
-     *
-     * @param  string  $uri
-     *
-     * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function makeUnsuccessfulWebhookWithInvalidSignature(string $uri): TestResponse
+    protected function makeUnsuccessfulWebhookWithInvalidSignature(string $uri)
     {
         $this->prepareConfiguration();
 

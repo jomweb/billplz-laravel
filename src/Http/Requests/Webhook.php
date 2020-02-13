@@ -10,8 +10,6 @@ class Webhook extends PaymentCompletion
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -29,8 +27,6 @@ class Webhook extends PaymentCompletion
 
     /**
      * Get the validated data from the request.
-     *
-     * @return array
      */
     public function validated(): array
     {

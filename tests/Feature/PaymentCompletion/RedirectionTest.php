@@ -1,6 +1,6 @@
 <?php
 
-namespace Billplz\Laravel\Tests\PaymentCompletion;
+namespace Billplz\Laravel\Tests\Feature\PaymentCompletion;
 
 use Illuminate\Support\Arr;
 use Billplz\Laravel\Tests\TestCase;

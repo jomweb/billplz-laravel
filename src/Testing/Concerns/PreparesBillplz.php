@@ -6,8 +6,6 @@ trait PreparesBillplz
 {
     /**
      * Prepare configuration.
-     *
-     * @return void
      */
     protected function prepareConfiguration(): void
     {
@@ -21,8 +19,6 @@ trait PreparesBillplz
 
     /**
      * Prepare configuration without signature.
-     *
-     * @return void
      */
     protected function prepareConfigurationWithoutSignature(): void
     {
