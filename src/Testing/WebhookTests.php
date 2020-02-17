@@ -2,6 +2,9 @@
 
 namespace Billplz\Laravel\Testing;
 
+use Billplz\Base\PaymentCompletion;
+use Billplz\Signature;
+
 trait WebhookTests
 {
     use Concerns\PreparesBillplz;
@@ -9,11 +12,11 @@ trait WebhookTests
     /**
      * Make successful webhook.
      */
-    protected function makeSuccessfulWebhook(string $uri)
+    protected function makeSuccessfulWebhook(string $uri, array $payload = [])
     {
         $this->prepareConfiguration();
 
-        $data = [
+        $data = \array_merge([
             'id' => 'W_79pJDk',
             'collection_id' => '599',
             'paid' => 'true',
@@ -26,21 +29,24 @@ trait WebhookTests
             'name' => 'MICHAEL API',
             'url' => 'http://billplz.dev/bills/W_79pJDk',
             'paid_at' => '2015-03-09 16:23:59 +0800',
-            'x_signature' => '6c52a7cd8212cbed06ed0022f6c148cf2ce8bca2e092391b73d76c19fb45e73f',
-        ];
+        ], $payload);
+
+        $signature = new Signature(\config('services.billplz.x-signature'), Signature::WEBHOOK_PARAMETERS);
+
+        $data['x_signature'] = $signature->create($data);
 
         return $this->post($uri, $data, ['Content-Type' => 'application/x-www-form-urlencoded'])
-                    ->assertStatus(200);
+            ->assertStatus(200);
     }
 
     /**
      * Make successful webhook without signature.
      */
-    protected function makeSuccessfulWebhookWithoutSignature(string $uri)
+    protected function makeSuccessfulWebhookWithoutSignature(string $uri, array $payload = [])
     {
         $this->prepareConfigurationWithoutSignature();
 
-        $data = [
+        $data = \array_merge([
             'id' => 'W_79pJDk',
             'collection_id' => '599',
             'paid' => 'true',
@@ -53,10 +59,10 @@ trait WebhookTests
             'name' => 'MICHAEL API',
             'url' => 'http://billplz.dev/bills/W_79pJDk',
             'paid_at' => '2015-03-09 16:23:59 +0800',
-        ];
+        ], $payload);
 
         return $this->post($uri, $data, ['Content-Type' => 'application/x-www-form-urlencoded'])
-                    ->assertStatus(200);
+            ->assertStatus(200);
     }
 
     /**
@@ -80,7 +86,7 @@ trait WebhookTests
         ];
 
         return $this->post($uri, $data, ['Content-Type' => 'application/x-www-form-urlencoded'])
-                    ->assertStatus(422);
+            ->assertStatus(422);
     }
 
     /**
@@ -107,6 +113,6 @@ trait WebhookTests
         ];
 
         return $this->post($uri, $data, ['Content-Type' => 'application/x-www-form-urlencoded'])
-                    ->assertStatus(419);
+            ->assertStatus(419);
     }
 }

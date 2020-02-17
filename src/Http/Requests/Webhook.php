@@ -15,7 +15,7 @@ class Webhook extends PaymentCompletion
     {
         return [
             'id' => ['required', 'alpha_dash'],
-            'collection_id' => ['required', 'integer'],
+            'collection_id' => ['required'],
             'amount' => ['required', 'numeric'],
             'state' => ['required', 'string'],
             'paid' => ['required', Rule::in(['true', 'false', true, false])],

@@ -35,6 +35,17 @@ class WebhookTest extends TestCase
     }
 
     /** @test */
+    public function it_can_accept_webhook_callback_when_phone_number_is_null()
+    {
+        $this->makeSuccessfulWebhook('webhook', ['mobile' => ''])
+            ->assertJson([
+                'id' => 'W_79pJDk',
+                'collection_id' => '599',
+                'paid' => 'true',
+            ]);
+    }
+
+    /** @test */
     public function it_can_accept_webhook_callback_without_signature()
     {
         $this->makeSuccessfulWebhookWithoutSignature('webhook')

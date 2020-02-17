@@ -2,6 +2,8 @@
 
 namespace Billplz\Laravel\Testing;
 
+use Billplz\Signature;
+
 trait RedirectionTests
 {
     use Concerns\PreparesBillplz;
