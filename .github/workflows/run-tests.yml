@@ -14,10 +14,9 @@ jobs:
             matrix:
                 php: [7.4, 7.3, 7.2]
                 laravel: [6.x, 7.x]
-                dependency-flag: ['--prefer-lowest', '--prefer-stable', '']
                 os: [ubuntu-latest, windows-latest]
 
-        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-flag }} - ${{ matrix.os }}
+        name: PHP${{ matrix.php }} with Laravel ${{ matrix.laravel }} on ${{ matrix.os }}
 
         steps:
             - name: Checkout code
@@ -39,6 +38,6 @@ jobs:
             - name: Install dependencies
               run: |
                   composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-                  composer update ${{ matrix.dependency-flag }} --prefer-dist --no-interaction --no-suggest
+                  composer update --prefer-dist --no-interaction --no-suggest
             - name: Execute tests
               run: vendor/bin/phpunit
