@@ -14,23 +14,9 @@ Billplz adapter for Laravel
 
 ## Installation
 
-To install through composer, simply put the following in your `composer.json` file:
+To install through composer by using the following command:
 
-```json
-{
-    "require": {
-        "jomweb/billplz-laravel": "^1.1"
-    }
-}
-```
-
-And then run `composer install` from the terminal.
-
-### Quick Installation
-
-Above installation can also be simplify by using the following command:
-
-    composer require "jomweb/billplz-laravel=^1.1"
+    composer require "jomweb/billplz-laravel"
 
 ## Configuration
 
