@@ -46,6 +46,9 @@ class BillplzServiceProviderTest extends TestCase
             'services.billplz.sandbox' => true,
         ]);
 
-        $this->assertSame('https://billplz-staging.herokuapp.com/api', Billplz::getApiEndpoint());
+        $this->assertTrue(\in_array(Billplz::getApiEndpoint(), [
+            'https://billplz-staging.herokuapp.com/api',
+            'https://www.billplz-sandbox.com/api',
+        ]));
     }
 }
