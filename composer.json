@@ -22,9 +22,8 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "illuminate/support": "^8.0",
-        "jomweb/billplz": "^4.3",
-        "laravie/codex-common": "^1.4.2",
+        "illuminate/support": "^8.18.1",
+        "jomweb/billplz": "^4.3.1",
         "php-http/guzzle7-adapter": "^0.1"
     },
     "require-dev": {
