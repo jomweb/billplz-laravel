@@ -20,9 +20,10 @@
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": "^7.3 || ^8.0",
+        "guzzlehttp/guzzle": "^7.0.1",
         "illuminate/support": "^8.0",
-        "jomweb/billplz": "^4.3",
+        "jomweb/billplz": "^4.4",
         "php-http/guzzle7-adapter": "^0.1"
     },
     "require-dev": {
