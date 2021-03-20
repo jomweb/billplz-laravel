@@ -10,6 +10,8 @@ trait WebhookTests
 
     /**
      * Make successful webhook.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeSuccessfulWebhook(string $uri, array $payload = [])
     {
@@ -40,6 +42,8 @@ trait WebhookTests
 
     /**
      * Make successful webhook without signature.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeSuccessfulWebhookWithoutSignature(string $uri, array $payload = [])
     {
@@ -66,6 +70,8 @@ trait WebhookTests
 
     /**
      * Make unsuccessful webhook.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeUnsuccessfulWebhook(string $uri)
     {
@@ -90,6 +96,8 @@ trait WebhookTests
 
     /**
      * Make unsuccessful webhook with invalid signature.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeUnsuccessfulWebhookWithInvalidSignature(string $uri)
     {

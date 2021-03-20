@@ -10,6 +10,8 @@ trait RedirectionTests
 
     /**
      * Make successful redirection.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeSuccessfulRedirection(string $uri)
     {
@@ -31,6 +33,8 @@ trait RedirectionTests
 
     /**
      * Make successful redirection without x-signature.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeSuccessfulRedirectionWithoutSignature(string $uri)
     {
@@ -49,6 +53,8 @@ trait RedirectionTests
 
     /**
      * Make unsuccessful redirection.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeUnsuccessfulRedirection(string $uri)
     {
@@ -69,6 +75,8 @@ trait RedirectionTests
 
     /**
      * Make unsuccessful redirection with invalid x-signature.
+     *
+     * @return \Illuminate\Testing\TestResponse
      */
     protected function makeUnsuccessfulRedirectionWithInvalidSignature(string $uri)
     {
