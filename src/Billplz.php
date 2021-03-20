@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Facade;
  * @method \Billplz\Contracts\MassPayment massPayment()
  * @method \Billplz\Contracts\BankAccount bank(string|null $version = null)
  *
- * @see \Billplz\Client
+ * @mixin \Billplz\Client
  */
 class Billplz extends Facade
 {
