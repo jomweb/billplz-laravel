@@ -2,8 +2,8 @@
 
 namespace Billplz\Laravel\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Billplz\Exceptions\FailedSignatureVerification;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Redirection extends PaymentCompletion

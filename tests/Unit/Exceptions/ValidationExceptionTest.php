@@ -2,9 +2,9 @@
 
 namespace Billplz\Laravel\Tests\Unit\Exceptions;
 
+use Billplz\Laravel\Exceptions\ValidationException;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Billplz\Laravel\Exceptions\ValidationException;
 
 class ValidationExceptionTest extends TestCase
 {

@@ -4,9 +4,9 @@ namespace Billplz\Laravel\Http\Requests;
 
 use Billplz\Client;
 use Billplz\Contracts\Bill;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
 use Billplz\Laravel\Exceptions\ValidationException;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 
 abstract class PaymentCompletion extends FormRequest
 {

@@ -3,8 +3,8 @@
 namespace Billplz\Laravel\Tests\Feature;
 
 use Billplz\Laravel\Billplz;
-use Billplz\Laravel\Tests\TestCase;
 use Billplz\Laravel\BillplzServiceProvider;
+use Billplz\Laravel\Tests\TestCase;
 
 class BillplzServiceProviderTest extends TestCase
 {

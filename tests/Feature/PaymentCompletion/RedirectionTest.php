@@ -2,10 +2,10 @@
 
 namespace Billplz\Laravel\Tests\Feature\PaymentCompletion;
 
-use Illuminate\Support\Arr;
-use Billplz\Laravel\Tests\TestCase;
-use Billplz\Laravel\Testing\RedirectionTests;
 use Billplz\Laravel\Http\Requests\Redirection;
+use Billplz\Laravel\Testing\RedirectionTests;
+use Billplz\Laravel\Tests\TestCase;
+use Illuminate\Support\Arr;
 
 class RedirectionTest extends TestCase
 {

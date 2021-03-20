@@ -2,7 +2,6 @@
 
 namespace Billplz\Laravel\Testing;
 
-use Billplz\Base\PaymentCompletion;
 use Billplz\Signature;
 
 trait WebhookTests

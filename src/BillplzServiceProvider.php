@@ -3,10 +3,10 @@
 namespace Billplz\Laravel;
 
 use Billplz\Client;
-use Laravie\Codex\Discovery;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
+use Laravie\Codex\Discovery;
 
 class BillplzServiceProvider extends ServiceProvider implements DeferrableProvider
 {
