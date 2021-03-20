@@ -3,8 +3,6 @@ name: coveralls
 on:
   push:
   pull_request:
-  schedule:
-    - cron: '0 0 * * 3'
 
 jobs:
   tests:
@@ -18,8 +16,6 @@ jobs:
           - "7.3"
         dependencies:
           - "locked"
-        laravel:
-          - "8.x"
         experimental:
           - false
 
