@@ -52,6 +52,6 @@ abstract class PaymentCompletion extends FormRequest
      */
     protected function hasSignatureKey(): bool
     {
-        return ! is_null($this->getClientInstance()->getSignatureKey());
+        return ! \is_null($this->getClientInstance()->getSignatureKey());
     }
 }

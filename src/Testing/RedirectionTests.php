@@ -26,7 +26,7 @@ trait RedirectionTests
             ],
         ];
 
-        $query = \http_build_query($data);
+        $query = http_build_query($data);
 
         return $this->get("{$uri}?{$query}")->assertStatus(200);
     }
@@ -46,7 +46,7 @@ trait RedirectionTests
             ],
         ];
 
-        $query = \http_build_query($data);
+        $query = http_build_query($data);
 
         return $this->get("{$uri}?{$query}")->assertStatus(200);
     }
@@ -68,7 +68,7 @@ trait RedirectionTests
             ],
         ];
 
-        $query = \http_build_query($data);
+        $query = http_build_query($data);
 
         return $this->get("{$uri}?{$query}")->assertStatus(422);
     }
@@ -91,7 +91,7 @@ trait RedirectionTests
             ],
         ];
 
-        $query = \http_build_query($data);
+        $query = http_build_query($data);
 
         return $this->get("{$uri}?{$query}")->assertStatus(419);
     }

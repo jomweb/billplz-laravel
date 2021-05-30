@@ -17,7 +17,7 @@ trait WebhookTests
     {
         $this->prepareConfiguration();
 
-        $data = \array_merge([
+        $data = array_merge([
             'id' => 'W_79pJDk',
             'collection_id' => '599',
             'paid' => 'true',
@@ -32,7 +32,7 @@ trait WebhookTests
             'paid_at' => '2015-03-09 16:23:59 +0800',
         ], $payload);
 
-        $signature = new Signature(\config('services.billplz.x-signature'), Signature::WEBHOOK_PARAMETERS);
+        $signature = new Signature(config('services.billplz.x-signature'), Signature::WEBHOOK_PARAMETERS);
 
         $data['x_signature'] = $signature->create($data);
 
@@ -49,7 +49,7 @@ trait WebhookTests
     {
         $this->prepareConfigurationWithoutSignature();
 
-        $data = \array_merge([
+        $data = array_merge([
             'id' => 'W_79pJDk',
             'collection_id' => '599',
             'paid' => 'true',
