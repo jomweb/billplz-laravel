@@ -1,7 +1,7 @@
 Billplz adapter for Laravel
 ==============
 
-[![tests](https://github.com/jomweb/billplz-laravel/workflows/tests/badge.svg?branch=1.x)](https://github.com/jomweb/billplz-laravel/actions?query=workflow%3Atests+branch%3A1.x)
+[![tests](https://github.com/jomweb/billplz-laravel/workflows/tests/badge.svg?branch=master)](https://github.com/jomweb/billplz-laravel/actions?query=workflow%3Atests+branch%3Amaster)
 [![Latest Stable Version](https://poser.pugx.org/jomweb/billplz-laravel/version)](https://packagist.org/packages/jomweb/billplz-laravel)
 [![Total Downloads](https://poser.pugx.org/jomweb/billplz-laravel/downloads)](https://packagist.org/packages/jomweb/billplz-laravel)
 [![Latest Unstable Version](https://poser.pugx.org/jomweb/billplz-laravel/v/unstable)](//packagist.org/packages/jomweb/billplz-laravel)
