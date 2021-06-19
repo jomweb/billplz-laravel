@@ -17,7 +17,7 @@ class BillplzServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function register()
     {
-        $this->app->bind('billplz', function (Container $app) {
+        $this->app->scoped('billplz', function (Container $app) {
             $config = $app->make('config')->get('services.billplz');
 
             return $this->createBillplzClient($config);
