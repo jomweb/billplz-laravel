@@ -24,7 +24,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "illuminate/support": "^8.47",
         "jomweb/billplz": "^4.3.1",
-        "php-http/guzzle7-adapter": "^0.1"
+        "php-http/guzzle7-adapter": "^1.0"
     },
     "require-dev": {
         "nunomaduro/collision": "^5.3",
