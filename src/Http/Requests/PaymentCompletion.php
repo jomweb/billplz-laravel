@@ -13,7 +13,7 @@ abstract class PaymentCompletion extends FormRequest
     /**
      * The client instance.
      *
-     * @var \Billplz\Client
+     * @var \Billplz\Client|null
      */
     protected $billplzClient;
 
@@ -33,7 +33,10 @@ abstract class PaymentCompletion extends FormRequest
     public function getClientInstance(): Client
     {
         if (! isset($this->billplzClient)) {
-            $this->billplzClient = $this->container->make('billplz');
+            /** @var \Billplz\Client $client */
+            $client = $this->container->make('billplz');
+
+            $this->billplzClient = $client;
         }
 
         return $this->billplzClient;

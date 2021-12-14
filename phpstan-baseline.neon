@@ -1,0 +1,12 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Billplz\\\\Contracts\\\\Bill\\:\\:redirect\\(\\)\\.$#"
+			count: 1
+			path: src/Http/Requests/Redirection.php
+
+		-
+			message: "#^Call to an undefined method Billplz\\\\Contracts\\\\Bill\\:\\:webhook\\(\\)\\.$#"
+			count: 1
+			path: src/Http/Requests/Webhook.php
+

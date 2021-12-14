@@ -4,6 +4,7 @@ namespace Billplz\Laravel;
 
 use Billplz\Client;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravie\Codex\Discovery;
@@ -18,7 +19,10 @@ class BillplzServiceProvider extends ServiceProvider implements DeferrableProvid
     public function register()
     {
         $this->app->scoped('billplz', function (Container $app) {
-            $config = $app->make('config')->get('services.billplz');
+            /** @var array{key: string, x-signature: string|null, sandbox: bool|null, version: string|null} $config */
+            $config = transform($app->make('config'), function (Repository $repository) {
+                return $repository->get('services.billplz');
+            });
 
             return $this->createBillplzClient($config);
         });
@@ -29,6 +33,7 @@ class BillplzServiceProvider extends ServiceProvider implements DeferrableProvid
     /**
      * Create Billplz Client.
      *
+     * @param  array{key: string, x-signature: string|null, sandbox: bool|null, version: string|null}  $config
      * @return \Billplz\Client
      */
     protected function createBillplzClient(array $config)
@@ -60,7 +65,7 @@ class BillplzServiceProvider extends ServiceProvider implements DeferrableProvid
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return array<int, string|class-string>
      */
     public function provides()
     {
