@@ -29,7 +29,7 @@ class Redirection extends PaymentCompletion
     /**
      * Get the validated data from the request.
      */
-    public function validated(): array
+    public function validated($key = null, $default = null): array
     {
         try {
             $validated = $this->getResourceInstance()->redirect($this->query());
