@@ -54,8 +54,6 @@ jobs:
       - name: Execute tests
         run: vendor/bin/phpunit
 
-
-jobs:
   tests-on-php-7:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
