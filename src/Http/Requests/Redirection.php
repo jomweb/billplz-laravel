@@ -28,6 +28,9 @@ class Redirection extends PaymentCompletion
 
     /**
      * Get the validated data from the request.
+     *
+     * @param  string|null  $key
+     * @param  string|array|null  $default
      */
     public function validated($key = null, $default = null): array
     {
