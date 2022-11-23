@@ -19,7 +19,7 @@ class RedirectionTest extends TestCase
         parent::setUp();
 
         $this->app['router']->get('completed', function (Redirection $request) {
-            return Arr::only($request->validated(), ['id', 'paid']);
+            return Arr::only($request->validated(), ['id', 'paid', 'transaction_id', 'transaction_status']);
         });
     }
 
@@ -30,6 +30,21 @@ class RedirectionTest extends TestCase
             ->assertJson([
                 'id' => 'W_79pJDk',
                 'paid' => 'true',
+            ]);
+    }
+
+    /** @test */
+    public function it_can_accept_redirection_callback_with_extra_payment_info()
+    {
+        $this->makeSuccessfulRedirection('completed', [
+            'transaction_id' => 'AC4GC031F42H',
+            'transaction_status' =>  'completed',
+        ])
+            ->assertJson([
+                'id' => 'W_79pJDk',
+                'paid' => 'true',
+                'transaction_id' => 'AC4GC031F42H',
+                'transaction_status' => 'completed'
             ]);
     }
 
