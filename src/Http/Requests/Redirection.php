@@ -23,6 +23,8 @@ class Redirection extends PaymentCompletion
             $rules['billplz.paid'] = ['required', Rule::in(['true', 'false', true, false])];
             $rules['billplz.paid_at'] = ['nullable', 'date'];
             $rules['billplz.x_signature'] = ['required'];
+            $rules['billplz.transaction_id'] = ['sometimes', 'nullable'];
+            $rules['billplz.transaction_status'] = ['sometimes', 'nullable', Rule::in('pending', 'completed', 'failed')];
         }
 
         return $rules;

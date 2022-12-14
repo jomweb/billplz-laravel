@@ -3,6 +3,7 @@
 namespace Billplz\Laravel\Testing;
 
 use Billplz\Signature;
+use Illuminate\Support\Arr;
 
 trait RedirectionTests
 {
@@ -13,18 +14,30 @@ trait RedirectionTests
      *
      * @return \Illuminate\Testing\TestResponse
      */
-    protected function makeSuccessfulRedirection(string $uri)
+    protected function makeSuccessfulRedirection(string $uri, array $payload = [])
     {
         $this->prepareConfiguration();
 
         $data = [
-            'billplz' => [
-                'id' => 'W_79pJDk',
-                'paid' => 'true',
-                'paid_at' => '2015-03-09 16:23:59 +0800',
-                'x_signature' => '3ea529e9897e7225cc443510c44077741b03eff448fd033d58ec5a6302c722e4',
-            ],
+            'billplz' => array_merge(
+                [
+                    'id' => 'W_79pJDk',
+                    'paid' => 'true',
+                    'paid_at' => '2015-03-09 16:23:59 +0800',
+                ],
+                $payload,
+            )
         ];
+
+        $signature = new Signature(config('services.billplz.x-signature'), Signature::REDIRECT_PARAMETERS);
+
+        $encodedData = collect($data['billplz'])
+            ->mapWithKeys(function ($value, $key) {
+                return ["billplz$key" => $value];
+            })
+            ->toArray();
+
+        $data['billplz']['x_signature'] = $signature->create($encodedData);
 
         $query = http_build_query($data);
 

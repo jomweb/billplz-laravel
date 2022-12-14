@@ -24,6 +24,8 @@ class Webhook extends PaymentCompletion
             'paid_at' => ['nullable', 'date'],
             'paid_amount' => ['required', 'numeric'],
             'x_signature' => [$this->hasSignatureKey() ? 'required' : 'sometimes'],
+            'transaction_id' => ['sometimes', 'nullable'],
+            'transaction_status' => ['sometimes', 'nullable', Rule::in('pending', 'completed', 'failed')]
         ];
     }
 

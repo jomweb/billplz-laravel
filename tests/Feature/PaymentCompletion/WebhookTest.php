@@ -19,7 +19,7 @@ class WebhookTest extends TestCase
         parent::setUp();
 
         $this->app['router']->post('webhook', function (Webhook $request) {
-            return Arr::only($request->validated(), ['id', 'collection_id', 'paid']);
+            return Arr::only($request->validated(), ['id', 'collection_id', 'paid', 'transaction_id', 'transaction_status']);
         });
     }
 
@@ -32,6 +32,21 @@ class WebhookTest extends TestCase
                 'collection_id' => '599',
                 'paid' => 'true',
             ]);
+    }
+
+    /** @test */
+    public function it_can_accept_webhook_callback_with_extra_payment_info()
+    {
+        $this->makeSuccessfulWebhook('webhook', [
+            'transaction_id' => 'AC4GC031F42H',
+            'transaction_status' =>  'completed',
+        ])->assertJson([
+            'id' => 'W_79pJDk',
+            'collection_id' => '599',
+            'paid' => 'true',
+            'transaction_id' => 'AC4GC031F42H',
+            'transaction_status' => 'completed',
+        ]);
     }
 
     /** @test */
