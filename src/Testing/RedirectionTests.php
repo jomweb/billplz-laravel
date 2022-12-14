@@ -32,7 +32,9 @@ trait RedirectionTests
         $signature = new Signature(config('services.billplz.x-signature'), Signature::REDIRECT_PARAMETERS);
 
         $encodedData = collect($data['billplz'])
-            ->mapWithKeys(fn ($value, $key) => ["billplz$key" => $value])
+            ->mapWithKeys(function ($value, $key) {
+                return ["billplz$key" => $value];
+            })
             ->toArray();
 
         $data['billplz']['x_signature'] = $signature->create($encodedData);

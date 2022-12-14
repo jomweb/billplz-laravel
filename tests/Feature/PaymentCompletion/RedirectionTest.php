@@ -38,7 +38,7 @@ class RedirectionTest extends TestCase
     {
         $this->makeSuccessfulRedirection('completed', [
             'transaction_id' => 'AC4GC031F42H',
-            'transaction_status' =>  'completed',
+            'transaction_status' => 'completed',
         ])
             ->assertJson([
                 'id' => 'W_79pJDk',
