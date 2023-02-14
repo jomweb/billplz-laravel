@@ -33,7 +33,10 @@
         "orchestra/testbench": "^7.0 || ^8.0"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "branch-alias": {
