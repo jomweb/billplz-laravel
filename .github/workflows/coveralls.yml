@@ -7,17 +7,15 @@ on:
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
+
     continue-on-error: ${{ matrix.experimental }}
+
     strategy:
       matrix:
-        os:
-          - "ubuntu-latest"
-        php:
-          - 8.1
-        dependencies:
-          - "highest"
-        experimental:
-          - false
+        os: [ubuntu-latest]
+        php: [8.1, '8.2']
+        dependencies: [highest]
+        experimental: [false]
 
     name: PHP${{ matrix.php }} on ${{ matrix.os }} (${{ matrix.dependencies }})
 
@@ -33,10 +31,10 @@ jobs:
           coverage: xdebug
 
       - name: Install dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: ramsey/composer-install@v2
         with:
-          dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "--prefer-dist --no-cache"
+          dependency-versions: ${{ matrix.dependencies }}
+          composer-options: --prefer-dist --no-cache
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
