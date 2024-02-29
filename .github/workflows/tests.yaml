@@ -38,11 +38,15 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
           coverage: none
 
+      - name: Install Laravel Framework ${{ matrix.laravel }}
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+
       - name: Install dependencies
         uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "--prefer-dist --no-cache --with='laravel/framework:~${{ matrix.laravel }}'"
+          composer-options: "--prefer-dist --no-cache"
 
       - name: Execute tests
         run: vendor/bin/phpunit
@@ -78,11 +82,15 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
           coverage: none
 
+      - name: Install Laravel Framework ${{ matrix.laravel }}
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update]
+
       - name: Install dependencies
         uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "--prefer-dist --no-cache --with='laravel/framework:~${{ matrix.laravel }}'"
+          composer-options: "--prefer-dist --no-cache"
 
       - name: Execute tests
         run: vendor/bin/phpunit
