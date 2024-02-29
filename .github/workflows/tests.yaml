@@ -14,13 +14,13 @@ jobs:
           - "ubuntu-latest"
           - "windows-latest"
         php:
-          - 8.1
           - 8.2
+          - 8.3
         dependencies:
           - "highest"
           - "lowest"
         laravel:
-          - "9.x"
+          - "11.x"
           - "10.x"
         experimental:
           - false
@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -38,20 +38,16 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
           coverage: none
 
-      - name: Install Laravel Framework ${{ matrix.laravel }}
-        run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-
       - name: Install dependencies
         uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "--prefer-dist --no-cache"
+          composer-options: "--prefer-dist --no-cache --with=laravel/framework:${{ matrix.laravel }}"
 
       - name: Execute tests
         run: vendor/bin/phpunit
 
-  tests-on-php80:
+  tests-on-php81:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     strategy:
@@ -60,12 +56,12 @@ jobs:
           - "ubuntu-latest"
           - "windows-latest"
         php:
-          - '8.0'
+          - 8.1
         dependencies:
           - "highest"
           - "lowest"
         laravel:
-          - "9.x"
+          - "10.x"
         experimental:
           - false
 
@@ -73,7 +69,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -82,15 +78,11 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
           coverage: none
 
-      - name: Install Laravel Framework ${{ matrix.laravel }}
-        run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-
       - name: Install dependencies
         uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "--prefer-dist --no-cache"
+          composer-options: "--prefer-dist --no-cache --with=laravel/framework:${{ matrix.laravel }}"
 
       - name: Execute tests
         run: vendor/bin/phpunit

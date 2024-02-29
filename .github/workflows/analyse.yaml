@@ -1,4 +1,4 @@
-name: coveralls
+name: analyse
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
         os:
           - "ubuntu-latest"
         php:
-          - 8.1
+          - 8.2
         dependencies:
           - "highest"
         experimental:
@@ -23,14 +23,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
-          coverage: xdebug
+          coverage: none
 
       - name: Install dependencies
         uses: "ramsey/composer-install@v2"
@@ -38,12 +38,5 @@ jobs:
           dependency-versions: "${{ matrix.dependencies }}"
           composer-options: "--prefer-dist --no-cache"
 
-      - name: Execute tests
-        run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
-      - name: Upload coverage results to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          composer global require php-coveralls/php-coveralls
-          php-coveralls --coverage_clover=build/logs/clover.xml -v
+      - name: Execute Static Code Analysis
+        run: vendor/bin/phpstan analyse
