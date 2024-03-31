@@ -3,7 +3,6 @@
 namespace Billplz\Laravel\Testing;
 
 use Billplz\Signature;
-use Illuminate\Support\Arr;
 
 trait RedirectionTests
 {
@@ -26,7 +25,7 @@ trait RedirectionTests
                     'paid_at' => '2015-03-09 16:23:59 +0800',
                 ],
                 $payload,
-            )
+            ),
         ];
 
         $signature = new Signature(config('services.billplz.x-signature'), Signature::REDIRECT_PARAMETERS);

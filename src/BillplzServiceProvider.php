@@ -3,8 +3,8 @@
 namespace Billplz\Laravel;
 
 use Billplz\Client;
-use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravie\Codex\Discovery;

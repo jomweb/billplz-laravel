@@ -41,7 +41,6 @@ class ValidationException extends HttpException
      * @param  \Illuminate\Contracts\Validation\Validator  $validator
      * @param  \Symfony\Component\HttpFoundation\Response  $response
      * @param  string  $errorBag
-     *
      * @return void
      */
     public function __construct($validator, $response = null, $errorBag = 'default')
@@ -67,7 +66,6 @@ class ValidationException extends HttpException
      * Set the HTTP status code to be used for the response.
      *
      * @param  int  $statusCode
-     *
      * @return $this
      */
     public function status($statusCode)
@@ -81,7 +79,6 @@ class ValidationException extends HttpException
      * Set the error bag on the exception.
      *
      * @param  string  $errorBag
-     *
      * @return $this
      */
     public function errorBag($errorBag)
@@ -103,8 +100,6 @@ class ValidationException extends HttpException
 
     /**
      * Get the response status code.
-     *
-     * @return int
      */
     public function getStatusCode(): int
     {

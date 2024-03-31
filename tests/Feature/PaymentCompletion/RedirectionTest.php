@@ -44,7 +44,7 @@ class RedirectionTest extends TestCase
                 'id' => 'W_79pJDk',
                 'paid' => 'true',
                 'transaction_id' => 'AC4GC031F42H',
-                'transaction_status' => 'completed'
+                'transaction_status' => 'completed',
             ]);
     }
 

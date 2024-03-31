@@ -39,7 +39,7 @@ class WebhookTest extends TestCase
     {
         $this->makeSuccessfulWebhook('webhook', [
             'transaction_id' => 'AC4GC031F42H',
-            'transaction_status' =>  'completed',
+            'transaction_status' => 'completed',
         ])->assertJson([
             'id' => 'W_79pJDk',
             'collection_id' => '599',
