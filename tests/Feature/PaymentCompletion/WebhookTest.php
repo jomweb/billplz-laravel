@@ -4,80 +4,64 @@ namespace Billplz\Laravel\Tests\Feature\PaymentCompletion;
 
 use Billplz\Laravel\Http\Requests\Webhook;
 use Billplz\Laravel\Testing\WebhookTests;
-use Billplz\Laravel\Tests\TestCase;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
-use PHPUnit\Framework\Attributes\Test;
 
-class WebhookTest extends TestCase
-{
-    use WebhookTests;
+use function Orchestra\Testbench\Pest\defineRoutes;
 
-    /** {@inheritDoc} */
-    #[\Override]
-    protected function defineRoutes($router): void
-    {
-        $router->post('webhook', function (Webhook $request) {
-            return Arr::only($request->validated(), ['id', 'collection_id', 'paid', 'transaction_id', 'transaction_status']);
-        });
-    }
+uses(WebhookTests::class);
 
-    #[Test]
-    public function it_can_accept_webhook_callback()
-    {
-        $this->makeSuccessfulWebhook('webhook')
-            ->assertJson([
-                'id' => 'W_79pJDk',
-                'collection_id' => '599',
-                'paid' => 'true',
-            ]);
-    }
+defineRoutes(function (Router $router) {
+    $router->post('webhook', function (Webhook $request) {
+        return Arr::only($request->validated(), ['id', 'collection_id', 'paid', 'transaction_id', 'transaction_status']);
+    });
+});
 
-    #[Test]
-    public function it_can_accept_webhook_callback_with_extra_payment_info()
-    {
-        $this->makeSuccessfulWebhook('webhook', [
-            'transaction_id' => 'AC4GC031F42H',
-            'transaction_status' => 'completed',
-        ])->assertJson([
+it('can accept webhook callback', function () {
+    $this->makeSuccessfulWebhook('webhook')
+        ->assertJson([
             'id' => 'W_79pJDk',
             'collection_id' => '599',
             'paid' => 'true',
-            'transaction_id' => 'AC4GC031F42H',
-            'transaction_status' => 'completed',
         ]);
-    }
 
-    #[Test]
-    public function it_can_accept_webhook_callback_when_phone_number_is_null()
-    {
-        $this->makeSuccessfulWebhook('webhook', ['mobile' => ''])
-            ->assertJson([
-                'id' => 'W_79pJDk',
-                'collection_id' => '599',
-                'paid' => 'true',
-            ]);
-    }
+});
 
-    #[Test]
-    public function it_can_accept_webhook_callback_without_signature()
-    {
-        $this->makeSuccessfulWebhookWithoutSignature('webhook')
-            ->assertJson([
-                'id' => 'W_79pJDk',
-                'collection_id' => '599',
-                'paid' => 'true',
-            ]);
-    }
+it('can accept webhook callback with extra payment info', function () {
+    $this->makeSuccessfulWebhook('webhook', [
+        'transaction_id' => 'AC4GC031F42H',
+        'transaction_status' => 'completed',
+    ])->assertJson([
+        'id' => 'W_79pJDk',
+        'collection_id' => '599',
+        'paid' => 'true',
+        'transaction_id' => 'AC4GC031F42H',
+        'transaction_status' => 'completed',
+    ]);
+});
 
-    #[Test]
-    public function it_cant_accept_webhook_callback_with_invalid_signature()
-    {
-        $this->makeUnsuccessfulWebhookWithInvalidSignature('webhook');
-    }
+it('can accept webhook callback when phone number is null', function () {
+    $this->makeSuccessfulWebhook('webhook', ['mobile' => ''])
+        ->assertJson([
+            'id' => 'W_79pJDk',
+            'collection_id' => '599',
+            'paid' => 'true',
+        ]);
+});
 
-    #[Test]
-    public function it_cant_accept_webhook_callback_given_invalid_data()
-    {
-        $this->makeUnsuccessfulWebhook('webhook');
-    }
-}
+it('can accept webhook callback without signature', function () {
+    $this->makeSuccessfulWebhookWithoutSignature('webhook')
+        ->assertJson([
+            'id' => 'W_79pJDk',
+            'collection_id' => '599',
+            'paid' => 'true',
+        ]);
+});
+
+it('cant accept webhook callback with invalid signature', function () {
+    $this->makeUnsuccessfulWebhookWithInvalidSignature('webhook');
+});
+
+it('cant accept webhook callback given invalid data', function () {
+    $this->makeUnsuccessfulWebhook('webhook');
+});

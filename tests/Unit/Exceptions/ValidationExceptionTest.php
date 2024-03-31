@@ -4,63 +4,46 @@ namespace Billplz\Laravel\Tests\Unit\Exceptions;
 
 use Billplz\Laravel\Exceptions\ValidationException;
 use Mockery as m;
-use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\TestCase;
 
-class ValidationExceptionTest extends TestCase
-{
-    /**
-     * Teardown the test environment.
-     */
-    protected function tearDown(): void
-    {
-        m::close();
-    }
+afterEach(fn () => m::close());
 
-    #[Test]
-    public function it_has_proper_signature()
-    {
-        $validator = m::mock('Illuminate\Contracts\Validation\Validator');
-        $response = m::mock('Symfony\Component\HttpFoundation\Response');
+it('has proper signature', function () {
+    $validator = m::mock('Illuminate\Contracts\Validation\Validator');
+    $response = m::mock('Symfony\Component\HttpFoundation\Response');
 
-        $validator->shouldReceive('errors->messages')->andReturn([
-            'device_id' => 'The device_id is required.',
-        ]);
+    $validator->shouldReceive('errors->messages')->andReturn([
+        'device_id' => 'The device_id is required.',
+    ]);
 
-        $e = new ValidationException($validator, $response);
+    $e = new ValidationException($validator, $response);
 
-        $this->assertSame($response, $e->getResponse());
-        $this->assertSame($response, $e->response);
-        $this->assertSame($validator, $e->validator);
-        $this->assertSame('default', $e->errorBag);
-        $this->assertSame(422, $e->getStatusCode());
-        $this->assertSame('The given data was invalid.', $e->getMessage());
-        $this->assertSame(['device_id' => 'The device_id is required.'], $e->errors());
-    }
+    $this->assertSame($response, $e->getResponse());
+    $this->assertSame($response, $e->response);
+    $this->assertSame($validator, $e->validator);
+    $this->assertSame('default', $e->errorBag);
+    $this->assertSame(422, $e->getStatusCode());
+    $this->assertSame('The given data was invalid.', $e->getMessage());
+    $this->assertSame(['device_id' => 'The device_id is required.'], $e->errors());
+});
 
-    #[Test]
-    public function it_can_override_error_bag()
-    {
-        $validator = m::mock('Illuminate\Contracts\Validation\Validator');
-        $response = m::mock('Symfony\Component\HttpFoundation\Response');
+it('can override error bag', function () {
+    $validator = m::mock('Illuminate\Contracts\Validation\Validator');
+    $response = m::mock('Symfony\Component\HttpFoundation\Response');
 
-        $e = new ValidationException($validator, $response);
+    $e = new ValidationException($validator, $response);
 
-        $e->errorBag('custom');
+    $e->errorBag('custom');
 
-        $this->assertSame('custom', $e->errorBag);
-    }
+    $this->assertSame('custom', $e->errorBag);
+});
 
-    #[Test]
-    public function it_can_override_status_code()
-    {
-        $validator = m::mock('Illuminate\Contracts\Validation\Validator');
-        $response = m::mock('Symfony\Component\HttpFoundation\Response');
+it('can override status code', function () {
+    $validator = m::mock('Illuminate\Contracts\Validation\Validator');
+    $response = m::mock('Symfony\Component\HttpFoundation\Response');
 
-        $e = new ValidationException($validator, $response);
+    $e = new ValidationException($validator, $response);
 
-        $e->status(401);
+    $e->status(401);
 
-        $this->assertSame(401, $e->getStatusCode());
-    }
-}
+    $this->assertSame(401, $e->getStatusCode());
+});
