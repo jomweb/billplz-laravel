@@ -1,0 +1,4 @@
+providers:
+  - Billplz\Laravel\BillplzServiceProvider
+
+migrations: false

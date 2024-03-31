@@ -4,6 +4,7 @@ namespace Billplz\Laravel\Tests\Unit\Exceptions;
 
 use Billplz\Laravel\Exceptions\ValidationException;
 use Mockery as m;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class ValidationExceptionTest extends TestCase
@@ -16,7 +17,7 @@ class ValidationExceptionTest extends TestCase
         m::close();
     }
 
-    /** @test */
+    #[Test]
     public function it_has_proper_signature()
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
@@ -37,7 +38,7 @@ class ValidationExceptionTest extends TestCase
         $this->assertSame(['device_id' => 'The device_id is required.'], $e->errors());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_override_error_bag()
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
@@ -50,7 +51,7 @@ class ValidationExceptionTest extends TestCase
         $this->assertSame('custom', $e->errorBag);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_override_status_code()
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');

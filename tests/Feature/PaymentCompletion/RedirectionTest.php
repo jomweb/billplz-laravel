@@ -6,24 +6,22 @@ use Billplz\Laravel\Http\Requests\Redirection;
 use Billplz\Laravel\Testing\RedirectionTests;
 use Billplz\Laravel\Tests\TestCase;
 use Illuminate\Support\Arr;
+use PHPUnit\Framework\Attributes\Test;
 
 class RedirectionTest extends TestCase
 {
     use RedirectionTests;
 
-    /**
-     * Setup the test environment.
-     */
-    protected function setUp(): void
+    /** {@inheritDoc} */
+    #[\Override]
+    protected function defineRoutes($router): void
     {
-        parent::setUp();
-
-        $this->app['router']->get('completed', function (Redirection $request) {
+        $router->get('completed', function (Redirection $request) {
             return Arr::only($request->validated(), ['id', 'paid', 'transaction_id', 'transaction_status']);
         });
     }
 
-    /** @test */
+    #[Test]
     public function it_can_accept_redirection_callback()
     {
         $this->makeSuccessfulRedirection('completed')
@@ -33,7 +31,7 @@ class RedirectionTest extends TestCase
             ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_accept_redirection_callback_with_extra_payment_info()
     {
         $this->makeSuccessfulRedirection('completed', [
@@ -48,7 +46,7 @@ class RedirectionTest extends TestCase
             ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_accept_redirection_callback_without_signature()
     {
         $this->makeSuccessfulRedirectionWithoutSignature('completed')
@@ -57,13 +55,13 @@ class RedirectionTest extends TestCase
             ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_cant_accept_redirection_callback_with_invalid_signature()
     {
         $this->makeUnsuccessfulRedirectionWithInvalidSignature('completed');
     }
 
-    /** @test */
+    #[Test]
     public function it_cant_accept_redirection_callback_given_bad_data()
     {
         $this->makeUnsuccessfulRedirection('completed');

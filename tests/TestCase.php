@@ -2,16 +2,16 @@
 
 namespace Billplz\Laravel\Tests;
 
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Testbench;
 
 abstract class TestCase extends Testbench
 {
-    /**
-     * Define environment setup.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    protected function getEnvironmentSetUp($app): void
+    use WithWorkbench;
+
+    /** {@inheritDoc} */
+    #[\Override]
+    protected function defineEnvironment($app): void
     {
         $app['config']->set('services.billplz', [
             'key' => '73eb57f0-7d4e-42b9-a544-aeac6e4b0f81',
@@ -21,29 +21,12 @@ abstract class TestCase extends Testbench
         ]);
     }
 
-    /**
-     * Get package aliases.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return array
-     */
-    protected function getPackageAliases($app)
+    /** {@inheritDoc} */
+    #[\Override]
+    protected function getPackageAliases($app): array
     {
         return [
             'Billplz' => \Billplz\Laravel\Billplz::class,
-        ];
-    }
-
-    /**
-     * Get package providers.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return array
-     */
-    protected function getPackageProviders($app)
-    {
-        return [
-            \Billplz\Laravel\BillplzServiceProvider::class,
         ];
     }
 }

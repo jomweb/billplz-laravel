@@ -8,7 +8,7 @@ use Billplz\Laravel\Tests\TestCase;
 
 class BillplzServiceProviderTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_has_proper_signature()
     {
         $billplz = new BillplzServiceProvider(null);
@@ -17,7 +17,7 @@ class BillplzServiceProviderTest extends TestCase
         $this->assertSame(['billplz', 'Billplz\Client'], $billplz->provides());
     }
 
-    /** @test */
+    #[Test]
     public function it_provides_the_service()
     {
         config(['services.billplz.key' => 'abc']);
@@ -27,7 +27,7 @@ class BillplzServiceProviderTest extends TestCase
         $this->assertSame('abc', Billplz::getApiKey());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_configure_api_version()
     {
         config([
@@ -38,7 +38,7 @@ class BillplzServiceProviderTest extends TestCase
         $this->assertSame('v4', Billplz::getApiVersion());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_use_sandbox_environment()
     {
         config([
