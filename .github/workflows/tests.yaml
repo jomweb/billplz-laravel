@@ -86,4 +86,4 @@ jobs:
           composer-options: "--prefer-dist --no-cache --with=laravel/framework:${{ matrix.laravel }}"
 
       - name: Execute tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/pest
